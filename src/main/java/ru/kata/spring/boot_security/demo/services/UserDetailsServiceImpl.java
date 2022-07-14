@@ -12,17 +12,17 @@ import ru.kata.spring.boot_security.demo.dao.UserDAO;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final UserDAO userRepository;
+    private final UserDAO userDAO;
 
     @Autowired
-    public UserDetailsServiceImpl(UserDAO userRepository) {
-        this.userRepository = userRepository;
+    public UserDetailsServiceImpl(UserDAO userDAO) {
+        this.userDAO = userDAO;
     }
 
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByName(username);
+        User user = userDAO.findByName(username);
 
         if(user == null) {
             throw new UsernameNotFoundException(String.format("User '%' not found", username));

@@ -12,7 +12,6 @@ public class Role implements GrantedAuthority {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "name")
     private String name;
 
     @Transient
@@ -22,8 +21,8 @@ public class Role implements GrantedAuthority {
     public Role() {
     }
 
-    public Role(String name) {
-        this.name = name;
+    public Role(String role) {
+        this.name = role;
     }
 
     @Override
@@ -44,8 +43,8 @@ public class Role implements GrantedAuthority {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String role) {
+        this.name = role;
     }
 
     public List<User> getUsers() {

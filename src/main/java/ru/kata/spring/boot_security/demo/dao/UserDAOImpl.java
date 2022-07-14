@@ -17,7 +17,9 @@ public class UserDAOImpl implements UserDAO{
 
     @Override
     public User findByName(String name) {
-        return entityManager.find(User.class, name);
+        return entityManager.createQuery("select u FROM User u JOIn fETCH u.roles WHERe u.name = :id", User.class)
+                .setParameter("id", name)
+                .getResultList().stream().findAny().orElse(null);
     }
 
     @Override

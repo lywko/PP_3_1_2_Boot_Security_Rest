@@ -8,6 +8,7 @@ import ru.kata.spring.boot_security.demo.models.Role;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 @Repository
 @Transactional
@@ -18,7 +19,9 @@ public class RoleDAOImpl implements RoleDAO {
 
     @Override
     public Role findByName(String name) {
-        return entityManager.find(Role.class, name);
+        return entityManager.createQuery("select u FROM Role u WHERe u.name = :id", Role.class)
+                .setParameter("id", name)
+                .getResultList().stream().findAny().orElse(null);
     }
 
     @Override
