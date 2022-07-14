@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.kata.spring.boot_security.demo.models.User;
-import ru.kata.spring.boot_security.demo.repositories.UserDAO;
+import ru.kata.spring.boot_security.demo.dao.UserDAO;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    public User show(int id) {
+    public User show(long id) {
         return userDAO.getById(id);
     }
 
@@ -83,7 +83,7 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    public void delete(int id) {
+    public void delete(long id) {
         userDAO.deleteById(id);
     }
 

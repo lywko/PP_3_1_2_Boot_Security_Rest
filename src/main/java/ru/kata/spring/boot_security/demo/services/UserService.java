@@ -8,7 +8,7 @@ public interface UserService {
 
     public List<User> index();
 
-    public User show(int id);
+    public User show(long id);
 
     public void save(User user, String[] roles, String pass);
     public void save(User user);
@@ -16,7 +16,7 @@ public interface UserService {
 
     public void update(User user);
 
-    public void delete(int id);
+    public void delete(long id);
 
     public User findByName(String name);
 }
