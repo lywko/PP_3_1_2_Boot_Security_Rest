@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
         user.setRoles(Arrays.stream(roles)
                 .map(roleService::findByName)
                 .collect(Collectors.toSet()));
-        userDAO.save(user);
+        userDAO.update(user);
     }
 
     @Override
@@ -79,7 +79,7 @@ public class UserServiceImpl implements UserService {
         user.setRoles(Arrays.stream(user.getRolesNames().split("!"))
                 .map(roleService::findByName)
                 .collect(Collectors.toSet()));
-        userDAO.save(user);
+        userDAO.update(user);
     }
 
 

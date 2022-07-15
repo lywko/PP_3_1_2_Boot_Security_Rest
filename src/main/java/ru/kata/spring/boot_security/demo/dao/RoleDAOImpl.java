@@ -25,7 +25,7 @@ public class RoleDAOImpl implements RoleDAO {
     }
 
     @Override
-    public void save(Role role) {
+    public void save(Role role)  {
         entityManager.persist(role);
     }
 }

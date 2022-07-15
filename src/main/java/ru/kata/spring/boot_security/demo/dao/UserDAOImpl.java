@@ -44,4 +44,9 @@ public class UserDAOImpl implements UserDAO{
                 .setParameter("id", id)
                 .executeUpdate();
     }
+
+    @Override
+    public void update(User user) {
+        entityManager.merge(user);
+    }
 }
